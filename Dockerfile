@@ -18,3 +18,4 @@ RUN yum -y install git gcc make
 RUN cd /usr/local/src && \
     git clone https://github.com/edenhill/kafkacat.git && \
     cd kafkacat && ./configure --prefix=/usr/local && make && make install
+RUN yum -y install python3-devel.x86_64 python3-pip.noarch
