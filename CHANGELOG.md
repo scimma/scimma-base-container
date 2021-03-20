@@ -1,3 +1,3 @@
 ## Changes
 
-0.4 Change Confluent Repo to 6.1
+0.2.0 Change Confluent Repo to 6.1
