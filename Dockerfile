@@ -9,7 +9,7 @@ RUN yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.n
 ###
 RUN rpm --import https://packages.confluent.io/rpm/5.4/archive.key
 ADD etc/repos/confluent.repo /etc/yum.repos.d/confluent.repo
-RUN yum -y install --disablerepo=* --enablerepo=confluent --enablerepo=confluent.dist confluent-community-2.13 \
+RUN yum -y install --disablerepo=* --enablerepo=Confluent --enablerepo=Confluent.dist confluent-community-2.13 \
                    avro-c.x86_64 avro-c-devel.x86_64 avro-c-debuginfo.x86_64 avro-c-tools.x86_64 \
                    avro-cpp.x86_64 avro-cpp-devel.x86_64 avro-cpp-debuginfo.x86_64 \
                    confluent-libserdes.x86_64 confluent-libserdes-devel.x86_64 confluent-libserdes-debuginfo.x86_64.rpm \
