@@ -1,7 +1,7 @@
-FROM sl:latest
+FROM centos:centos8
 RUN yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm net-tools \
                    java-11-openjdk-headless.x86_64 java-11-openjdk-headless-debug.x86_64 emacs-nox perl \
-                   perl-Getopt-Long bind-utils cyrus-sasl openssl nmap-ncat 
+                   perl-Getopt-Long bind-utils cyrus-sasl openssl nmap-ncat cpanm
 ###
 
 ### Install Confluent Packages.
@@ -21,4 +21,6 @@ RUN yum -y install git gcc make
 RUN cd /usr/local/src && \
     git clone https://github.com/edenhill/kafkacat.git && \
     cd kafkacat && ./configure --prefix=/usr/local && make && make install
+RUN cpanm install Test::More
+RUN cpanm install Net::Kafka
 RUN yum -y install python3-devel.x86_64 python3-pip.noarch
