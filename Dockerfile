@@ -3,8 +3,8 @@ RUN yum -y install epel-release
 RUN yum -y install --enablerepo=powertools java-11-openjdk-headless.x86_64 java-latest-openjdk-headless-fastdebug.x86_64 \
                    emacs-nox perl perl-Getopt-Long perl-App-cpanminus perl-Test-Most perl-JSON pkgconf-pkg-config.x86_64 \
                    openssl nmap-ncat git gcc make snappy snappy-devel boost-devel boost openssl-devel \
-                   cyrus-sasl-md5 cyrus-sasl-devel jansson python39-devel.x86_64 python3-pip.noarch \
-                   python39-toml python3-devel net-tools bind-utils
+                   cyrus-sasl-md5 cyrus-sasl-devel jansson python3-devel python39-devel.x86_64 python3-pip.noarch \
+                   python39-toml python3-toml net-tools bind-utils
 ###
 ### Install Confluent Packages.
 ### Version (5.4) must match version referenced in confluent.repo
