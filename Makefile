@@ -3,8 +3,8 @@ REGION   := us-west-2
 AWSREG   := 585193511743.dkr.ecr.us-west-2.amazonaws.com
 
 TAG      := $(shell git log -1 --pretty=%H || echo MISSING )
-CNT_IMG  := $(NAME):$(TAG)
-CNT_LTST := $(NAME):latest
+CNT_IMG  := $(CNT_NAME):$(TAG)
+CNT_LTST := $(CNT_NAME):latest
 
 .PHONY: set-release-tags push test clean all container
 
