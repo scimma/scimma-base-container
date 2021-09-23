@@ -1,9 +1,10 @@
 FROM centos:centos8
 RUN yum -y install epel-release
 RUN yum -y install --enablerepo=powertools java-11-openjdk-headless.x86_64 java-latest-openjdk-headless-fastdebug.x86_64 \
-                   emacs-nox perl perl-Getopt-Long perl-App-cpanminus perl-Test-Most pkgconf-pkg-config.x86_64 \
-		   openssl nmap-ncat git gcc make snappy snappy-devel boost-devel boost openssl-devel \
-                   cyrus-sasl-md5 cyrus-sasl-devel jansson
+                   emacs-nox perl perl-Getopt-Long perl-App-cpanminus perl-Test-Most perl-JSON pkgconf-pkg-config.x86_64 \
+                   openssl nmap-ncat git gcc make snappy snappy-devel boost-devel boost openssl-devel \
+                   cyrus-sasl-md5 cyrus-sasl-devel jansson python39-devel.x86_64 python3-pip.noarch \
+                   python39-toml python3-devel net-tools bind-utils
 ###
 ### Install Confluent Packages.
 ### Version (5.4) must match version referenced in confluent.repo
@@ -14,7 +15,7 @@ RUN yum -y install --disablerepo=* --enablerepo=Confluent --enablerepo=Confluent
                    avro-c.x86_64 avro-c-devel.x86_64 avro-c-debuginfo.x86_64 avro-c-tools.x86_64 \
                    avro-cpp.x86_64 avro-cpp-devel.x86_64 avro-cpp-debuginfo.x86_64 \
                    confluent-libserdes.x86_64 confluent-libserdes-devel.x86_64 confluent-libserdes-debuginfo.x86_64 \
-		   confluent-cli.x86_64 confluent-kafka confluent-common.noarch \
+                   confluent-cli.x86_64 confluent-kafka confluent-common.noarch \
                    librdkafka1.x86_64 librdkafka-devel.x86_64 librdkafka1-debuginfo.x86_64
 RUN cpanm install Net::Kafka
 ###
@@ -23,4 +24,3 @@ RUN cpanm install Net::Kafka
 RUN cd /usr/local/src && \
     git clone https://github.com/edenhill/kafkacat.git && \
     cd kafkacat && ./configure --prefix=/usr/local && make && make install
-RUN yum -y install python39-devel.x86_64 python3-pip.noarch
