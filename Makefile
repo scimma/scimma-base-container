@@ -1,6 +1,4 @@
 CNT_NAME := scimma/base
-REGION   := us-west-2
-AWSREG   := 585193511743.dkr.ecr.us-west-2.amazonaws.com
 
 TAG      := $(shell git log -1 --pretty=%H || echo MISSING )
 CNT_IMG  := $(CNT_NAME):$(TAG)
@@ -27,14 +25,14 @@ set-release-tags:
 
 push: set-release-tags
 	@(echo $(RELEASE_TAG) | grep -P '^[0-9]+\.[0-9]+\.[0-9]+$$' > /dev/null ) || (echo Bad release tag: $(RELEASE_TAG) && exit 1)
-
-	/usr/local/bin/aws ecr get-login-password | docker login --username AWS --password-stdin $(AWSREG)
-	docker tag $(CNT_IMG) $(AWSREG)/$(CNT_NAME):$(RELEASE_TAG)
-	docker tag $(CNT_IMG) $(AWSREG)/$(CNT_NAME):$(MAJOR_TAG)
-	docker tag $(CNT_IMG) $(AWSREG)/$(CNT_NAME):$(MAJOR_TAG).$(MINOR_TAG)
-	docker push $(AWSREG)/$(CNT_NAME):$(RELEASE_TAG)
-	docker push $(AWSREG)/$(CNT_NAME):$(MAJOR_TAG)
-	docker push $(AWSREG)/$(CNT_NAME):$(MAJOR_TAG).$(MINOR_TAG)
+	@eval "echo $$BUILDERCRED" | docker login --username $(BUILDER) --password-stdin
+	docker tag $(CNT_IMG) $(CNT_NAME):$(RELEASE_TAG)
+	docker tag $(CNT_IMG) $(CNT_NAME):$(MAJOR_TAG)
+	docker tag $(CNT_IMG) $(CNT_NAME):$(MAJOR_TAG).$(MINOR_TAG)	
+	docker push $(CNT_NAME):$(RELEASE_TAG)
+	docker push $(CNT_NAME):$(MAJOR_TAG)
+	docker push $(CNT_NAME):$(MAJOR_TAG).$(MINOR_TAG)
+	docker push $(CNT_LTST)
 	rm -f $(HOME)/.docker/config.json
 
 test:
