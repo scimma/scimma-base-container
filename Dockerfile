@@ -10,7 +10,6 @@ RUN yum -y install --enablerepo=powertools java-11-openjdk-headless.x86_64 java-
 ###
 RUN rpm --import https://packages.confluent.io/rpm/6.1/archive.key
 ADD etc/repos/confluent.repo /etc/yum.repos.d/confluent.repo
-
 RUN yum -y install --disablerepo=* --enablerepo=Confluent --enablerepo=Confluent.dist confluent-community-2.13 \
                    avro-c.x86_64 avro-c-devel.x86_64 avro-c-debuginfo.x86_64 avro-c-tools.x86_64 \
                    avro-cpp.x86_64 avro-cpp-devel.x86_64 avro-cpp-debuginfo.x86_64 \
@@ -24,4 +23,4 @@ RUN cpanm install Net::Kafka
 RUN cd /usr/local/src && \
     git clone https://github.com/edenhill/kafkacat.git && \
     cd kafkacat && ./configure --prefix=/usr/local && make && make install
-RUN yum -y install python3-devel.x86_64 python3-pip.noarch
+RUN yum -y install python39-devel.x86_64 python3-pip.noarch
