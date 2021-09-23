@@ -10,6 +10,7 @@ RUN yum -y install --enablerepo=powertools java-11-openjdk-headless.x86_64 java-
 ###
 RUN rpm --import https://packages.confluent.io/rpm/6.1/archive.key
 ADD etc/repos/confluent.repo /etc/yum.repos.d/confluent.repo
+
 RUN yum -y install --disablerepo=* --enablerepo=Confluent --enablerepo=Confluent.dist confluent-community-2.13 \
                    avro-c.x86_64 avro-c-devel.x86_64 avro-c-debuginfo.x86_64 avro-c-tools.x86_64 \
                    avro-cpp.x86_64 avro-cpp-devel.x86_64 avro-cpp-debuginfo.x86_64 \
