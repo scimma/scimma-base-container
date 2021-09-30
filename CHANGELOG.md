@@ -1,5 +1,12 @@
 ## Changes
 
+0.3.3
+Sep 30, 2021
+Address issue #63 Podman compatibility issues with pulling scimma/server:0.5
+
+0.3.2
+Add python3-toml package
+
 0.3.1
 Add some generally useful packages needed for hopbeat-monitor.
 
