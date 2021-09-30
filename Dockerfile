@@ -17,7 +17,7 @@ RUN yum -y install --disablerepo=* --enablerepo=Confluent --enablerepo=Confluent
                    confluent-libserdes.x86_64 confluent-libserdes-devel.x86_64 confluent-libserdes-debuginfo.x86_64 \
                    confluent-cli.x86_64 confluent-kafka confluent-common.noarch \
                    librdkafka1.x86_64 librdkafka-devel.x86_64 librdkafka1-debuginfo.x86_64
-RUN cpanm install Net::Kafka
+RUN cpanm install Net::Kafka && rm -rf /root/.cpanm
 ###
 ### Install kafkacat
 ###
