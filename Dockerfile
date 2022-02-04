@@ -1,4 +1,4 @@
-FROM centos:centos8
+FROM rockylinux:8.5
 RUN yum -y install epel-release
 RUN yum -y install --enablerepo=powertools java-11-openjdk-headless.x86_64 java-latest-openjdk-headless-fastdebug.x86_64 \
                    emacs-nox perl perl-Getopt-Long perl-App-cpanminus perl-Test-Most perl-JSON pkgconf-pkg-config.x86_64 \
