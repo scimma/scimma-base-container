@@ -1,4 +1,8 @@
 ## Changes
+0.5.2 
+April 21, 2023      
+
+Update to Confluent 7.3
 
 0.3.3
 Sep 30, 2021
