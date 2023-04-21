@@ -9,9 +9,9 @@ RUN dnf -y install --enablerepo=powertools java-11-openjdk-headless.x86_64 java-
 ### Install Confluent Packages.
 ### Version (5.4) must match version referenced in confluent.repo
 ###
-RUN dnf upgrade --refresh rpm glibc
+RUN dnf -y upgrade --refresh rpm glibc
 RUN rm /var/lib/rpm/.rpm.lock
-RUN dnf upgrade dnf
+RUN dnf -y upgrade dnf
 RUN rpm --import https://packages.confluent.io/rpm/7.3/archive.key
 ADD etc/repos/confluent.repo /etc/yum.repos.d/confluent.repo
 RUN dnf -y install --disablerepo=* --enablerepo=Confluent --enablerepo=Confluent.dist confluent-community-2.13 \
