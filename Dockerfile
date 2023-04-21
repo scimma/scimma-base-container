@@ -26,4 +26,4 @@ RUN cpanm install Net::Kafka && rm -rf /root/.cpanm
 ###
 RUN cd /usr/local/src && \
     git clone https://github.com/edenhill/kcat.git && \
-    cd kcat && ./configure --prefix=/usr/local && make && INSTALL=install make install
+    cd kcat && INSTALL=install ./configure --prefix=/usr/local && INSTALL=install make && INSTALL=install make install
