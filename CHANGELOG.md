@@ -1,4 +1,8 @@
 ## Changes
+0.6.0
+Jun 11, 2025
+Update to Rocky 8.10
+
 0.5.2 
 April 21, 2023      
 
